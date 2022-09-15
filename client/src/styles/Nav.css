@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar{
+    position: relative;
+    width: 100%;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+}
+
+label{
+    display: none;
+}
+
+header{
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ECF5A8;
+}
+
+header .logo{
+    position: relative;
+    color: #8DD9D1;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation a{
+    color: #8DD9D1;
+    background: #ECF5A8;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+}
+
+header .navigation a:not(:last-child){
+    margin-right: 30px;
+}
+
+header .navigation a:hover{
+    color: #49AAf5;
+}
+
+/* responsive styles */
+@media (max-width: 960px){
+    header .navigation{
+        display: none;
+    }
+
+    label .menu-btn{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        color: #8DD9D1;
+    }
+
+    label .close-btn{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        color: #8DD9D1;
+    }
+
+    label .menu-btn:hover{
+        color: #49AAf5;
+    }
+
+    label .close-btn:hover{
+        color: #49AAf5;
+    }
+
+    label .close-btn{
+        display: none;
+    }
+
+    #check:checked ~ header .navigation{
+        z-index: 2;
+        position: fixed;
+        background: #ECF5A8;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #check:checked ~ header .navigation a{
+        font-weight: 700;
+        margin-right: 0;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+
+    #check:checked ~ header label .menu-btn{
+        display: none;
+    }
+
+    #check:checked ~ header label .close-btn{
+        z-index: 2;
+        display: block;
+        position: fixed;
+    }
+
+    label .menu-btn{
+        position: absolute;
+        right: 2.4em;
+    }
+
+    header .logo{
+        position: absolute;
+        bottom: -6px;
+    }
+}

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url('../assets/animateddogs.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.team {
+    max-width: 650px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.team h2{
+    background-color: #ECF5A8;
+    border-radius: 20px;
+    color: #8DD9D1;
+    font-size: 35px;
+    text-transform: lowercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.team h3{
+    background-color: #8DD9D1;
+    color:#ECF5A8;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-size: 30px;
+    text-transform: lowercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 60px;
+    text-align: center;
+    padding-top: 20px;
+    
+}
+
+.team p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    background-color: #ECF5A8;
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.team img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
