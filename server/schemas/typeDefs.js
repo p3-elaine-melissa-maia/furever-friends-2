@@ -7,7 +7,6 @@ const typeDefs = gql`
     fullname: String
     email: String
     password: String
-    createdAt: String
   }
   type Post {
     _id: ID
