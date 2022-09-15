@@ -9,9 +9,11 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const paw = <FontAwesomeIcon icon={faPaw}/>
 
 function Nav() {
-
   function showNavigation() {
     if (Auth.loggedIn()) {
+
+      const userId = Auth.getProfile().data._id;
+      
       return (
         <div className="navigation">
           <a>
@@ -30,7 +32,7 @@ function Nav() {
             </Link>
           </a>
           <a>
-            <Link to="/profile/:userId">
+            <Link to={`/profile/${userId}`}>
               Profile
             </Link>
           </a>

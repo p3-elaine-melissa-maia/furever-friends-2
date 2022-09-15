@@ -59,7 +59,7 @@ const resolvers = {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: userId },
-          { $addToSet: { posts: img } },
+          { $addToSet: { posts: caption } },
           { 
             new: true,
             runvalidators: true, 

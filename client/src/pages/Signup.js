@@ -33,60 +33,62 @@ function Signup(props) {
   };
 
   return (
-    <div className="form">
-      <Link to="/login">← go to log in</Link>
+    <section>
+      <div className="form">
+        <Link to="/login">← go to log in</Link>
 
-      <h2>Sign Up</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="username">username:</label>
-          <input
-            placeholder="username"
-            name="username"
-            type="username"
-            id="username"
-            onChange={handleChange}
-          />
-        </div>
+        <h2>Sign Up</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div>
+            <label htmlFor="username">username:</label>
+            <input
+              placeholder="username"
+              name="username"
+              type="username"
+              id="username"
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="fullname">full name:</label>
-          <input
-            placeholder="name"
-            name="fullname"
-            type="fullname"
-            id="fullname"
-            onChange={handleChange}
-          />
-        </div>
+          <div>
+            <label htmlFor="fullname">full name:</label>
+            <input
+              placeholder="name"
+              name="fullname"
+              type="fullname"
+              id="fullname"
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="email">email:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
+          <div>
+            <label htmlFor="email">email:</label>
+            <input
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="password">password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="password"
-            onChange={handleChange}
-          />
-        </div>
+          <div>
+            <label htmlFor="password">password:</label>
+            <input
+              placeholder="******"
+              name="password"
+              type="password"
+              id="password"
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+          <div className="flex-row flex-end">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 

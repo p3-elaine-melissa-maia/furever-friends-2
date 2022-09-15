@@ -35,3 +35,14 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_POSTS = gql`
+  query getPosts{
+    posts {
+      _id
+      img
+      caption
+      username
+      createdAt
+    }
+  }`

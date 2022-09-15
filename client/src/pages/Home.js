@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
 // import ProductList from "../components/ProductList";
 // import CategoryMenu from "../components/CategoryMenu";
 // import Cart from "../components/Cart";
@@ -14,7 +16,7 @@ const Home = () => {
             {" "}
             Find Your <br />{" "}
             <span>
-              Furever Friend <i className="fa-solid fa-heart"></i>
+              Furever Friend <FontAwesomeIcon icon={faHeart}/>
             </span>
           </h2>
           <p>

@@ -31,3 +31,23 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+mutation addPost(
+  $img: String
+  $caption: String! 
+  ) {addPost(
+    img: $img
+    caption: $caption
+  ) {
+      _id
+      caption
+      img
+      createdAt
+      comments {
+        _id
+        commentBody
+      }
+  }
+}
+`;

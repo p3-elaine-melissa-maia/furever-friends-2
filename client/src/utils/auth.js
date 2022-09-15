@@ -30,7 +30,7 @@ class AuthService {
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
-
+    console.log(idToken);
     //decoded token info here
     window.location.assign('/');
   }
