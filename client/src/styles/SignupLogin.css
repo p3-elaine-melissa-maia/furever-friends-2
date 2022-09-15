@@ -78,6 +78,7 @@ form button{
     letter-spacing: 1px;
     padding: 10px 15px;
     border-radius: 20px;
+    text-align: center;
 }
 
 form button:hover{

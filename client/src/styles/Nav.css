@@ -10,7 +10,6 @@
 .navbar{
     position: relative;
     width: 100%;
-    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -18,7 +17,11 @@
     background-position: center;
 }
 
-label{
+label .menu-btn{
+    display: none;
+}
+
+label .close-btn{
     display: none;
 }
 
@@ -41,6 +44,10 @@ header .logo{
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 1px;
+}
+
+header ul {
+    list-style-type: none;
 }
 
 header .navigation a{
