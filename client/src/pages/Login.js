@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
+import '../styles/SignupLogin.css';
+
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
@@ -30,7 +32,7 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
+    <div className="form">
       <Link to="/signup">← Go to Signup</Link>
 
       <h2>Login</h2>
@@ -46,12 +48,12 @@ function Login(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
             name="password"
             type="password"
-            id="pwd"
+            id="password"
             onChange={handleChange}
           />
         </div>
