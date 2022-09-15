@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url('../assets/animateddogs.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.form{
+    max-width: 650px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.form h2{
+    background-color: #ECF5A8;
+    border-radius: 20px;
+    color: #8DD9D1;
+    font-size: 30px;
+    text-transform: lowercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+.form label{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+form{
+    background-color: #8DD9D1;
+    border-radius: 20px;
+    font-size: 30px;
+    text-transform: lowercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+}
+
+form input{
+    width: 60%;
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+
+form button{
+    color: #8DD9D1;
+    background: #ECF5A8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+form button:hover{
+    color: #49AAf5;
+}
+
+.form a{
+    color: #ECF5A8;
+    background: #8DD9D1;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.form a:hover{
+    color: #49AAf5;
+}
+
+/* responsive styles */
+
+@media (max-width: 960px){
+    .form h2{
+        font-size: 45px;
+        line-height: 50px;
+    }
+
+    form input{
+        font-size: 14px;
+    }
+
+    form input label{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 560px){
+    .form h2{
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    form input{
+        font-size: 14px;
+    }
+}
