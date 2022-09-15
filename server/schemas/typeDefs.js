@@ -1,60 +1,46 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Category {
-    _id: ID
-    name: String
-  }
-
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
-  }
-
-  type Order {
-    _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
-
   type User {
     _id: ID
-    firstName: String
-    lastName: String
+    username: String
+    fullname: String
     email: String
-    orders: [Order]
+    password: String
+    createdAt: String
   }
-
-  type Checkout {
-    session: ID
+  type Post {
+    _id: ID
+    username: String
+    img: String
+    caption: String
+    createdAt: String
+    comments: [Comment]
   }
-
+  type Comment {
+    _id: ID
+    commentBody: String
+    username: String
+  }
   type Auth {
     token: ID
     user: User
   }
-
   type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    users: [User]
+    user(userId: ID!): User
+    me: User
+    posts(username: String, img: String, caption: String, comment: ID): [Post]
+    comments(_id: String, username: String): [Comment]
   }
-
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    addUser(username: String!, fullname: String!, email: String!, password: String!): Auth
+    addPost(userId: ID!, img: String, caption: String!): Post
+    addComment(userId: ID!, commentBody: String!): Comment
+    updateUser(userId: ID!, username: String, fullname: String, email: String, password: String): User
+    updatePost(postId: ID!, img: String, caption: String): Post
+    updateComment(commentId: ID!, commentBody: String!): Comment
     login(email: String!, password: String!): Auth
   }
 `;
-
 module.exports = typeDefs;
