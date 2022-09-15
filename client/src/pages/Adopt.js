@@ -9,9 +9,11 @@ function PetFinderForm() {
 
   });
 
-  const handleSpeciesInput = (event) => {
-    setValues({...values, species: event.target.value})
-  };
+function fetchData() {
+  const url = "https://api.petfinder.com/v2/animals"
+  fetch(url)
+  .then((response) => response.json())
+};
 
   const handleZipInput = (event) => {
     setValues({...values, zip: event.target.value})
