@@ -34,12 +34,12 @@ function Signup(props) {
 
   return (
     <div className="form">
-      <Link to="/login">← Go to Login</Link>
+      <Link to="/login">← go to log in</Link>
 
-      <h2>Signup</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">username:</label>
           <input
             placeholder="username"
             name="username"
@@ -48,8 +48,9 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+
         <div>
-          <label htmlFor="fullname">Name:</label>
+          <label htmlFor="fullname">full name:</label>
           <input
             placeholder="name"
             name="fullname"
@@ -58,8 +59,9 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+
         <div>
-          <label htmlFor="email">Email Address:</label>
+          <label htmlFor="email">email:</label>
           <input
             placeholder="youremail@test.com"
             name="email"
@@ -68,8 +70,9 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">password:</label>
           <input
             placeholder="******"
             name="password"
@@ -78,6 +81,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
         </div>

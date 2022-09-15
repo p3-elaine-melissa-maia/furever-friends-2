@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <section>
+      {/* <Navbar></Navbar> */}
       <div className="content">
         <div className="info">
           <h2>
