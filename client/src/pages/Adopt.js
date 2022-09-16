@@ -24,7 +24,7 @@ function fetchData() {
       <form class="pet-finder-form">
       <label>
           Pick your species:
-          <select onChange={handleSpeciesInput}>
+          <select >
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
           </select>
@@ -60,12 +60,12 @@ function Adopt() {
 
   if (pets) {
     return <>
-     <PetFinderForm/><div></div>
+      <PetFinderForm/><div></div>
     </>
   };
 
     return <>
-     <PetFinderForm/><div></div>
+      <PetFinderForm/><div></div>
     </>
   
 };
