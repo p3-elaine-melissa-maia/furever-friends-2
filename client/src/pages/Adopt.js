@@ -2,46 +2,66 @@ import { useEffect, useState } from "react";
 import React from 'react';
 import '../styles/Home.css'
 
-function PetFinderForm() {
-  const [values, setValues] = useState ({
+function Adopt() {
+  const [values, setValues] = useState({
     species: "",
     zip: "",
 
   });
 
-function fetchData() {
-  const url = "https://api.petfinder.com/v2/animals"
-  fetch(url)
-  .then((response) => response.json())
-};
+  const handleSpeciesInput = (event) => {
+    setValues({ ...values, species: event.target.value })
+  };
 
   const handleZipInput = (event) => {
-    setValues({...values, zip: event.target.value})
+    setValues({ ...values, zip: event.target.value })
+  };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetchData();
+  };
+
+  function fetchData() {
+    var petfinder = require("@petfinder/petfinder-js");
+    var client = new petfinder.Client({ apiKey: "85M0Le5ywilSAxXmQk5cvNWgrO03XluwDzz2ALbvGHwFQpSk3M", secret: "y6uvIhNy9I6se6Fu9zCRaHY8jf99I2hYSgczYJBg" });
+
+    client.animal.search()
+      .then(function (response) {
+        // Do something with `response.data.animals`
+        console.log(response)
+      })
+      
+      .catch(function (error) {
+        // Handle the error
+      });
   };
 
   return (
-    <div class="form-container">
-      <form class="pet-finder-form">
-      <label>
+    <div className="form-container">
+      <form className="pet-finder-form" onSubmit={handleSubmit}>
+        <label>
           Pick your species:
+
           <select >
+
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
           </select>
         </label>
-        <label 
-        type="string"
-        onChange={handleZipInput}
-        value={values.zip}
-        class="form-field"
-        name="zip">
-        </label>
-        
+        <input
+          type="string"
+          onChange={handleZipInput}
+          value={values.zip}
+          className="form-group"
+          name="zip"
+          placeholder="Zip Code">
+        </input>
+        <button type="submit">Submit</button>
       </form>
     </div>
   )
 };
-
 
 function Adopt() {
   const url = "https://api.petfinder.com/v2/animals"
@@ -70,4 +90,3 @@ function Adopt() {
   
 };
 
-export default Adopt;
