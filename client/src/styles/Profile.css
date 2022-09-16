@@ -66,8 +66,11 @@ form textarea{
     width: 300px;
     height: 200px;
     border-radius: 20px;
+    margin: 20px;
+    margin-top: 10px;
     padding-left: 10px;
     font-size: 20px;
+    
 }
 
 
