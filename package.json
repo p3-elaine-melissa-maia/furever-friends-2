@@ -21,6 +21,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@petfinder/petfinder-js": "^1.0.6",
     "package.json": "^2.0.1"
   }
 }
