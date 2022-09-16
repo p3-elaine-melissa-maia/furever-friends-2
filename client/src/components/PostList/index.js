@@ -12,7 +12,8 @@ const PostList = ({ posts = [] }) => {
             {posts && 
             posts.map((post) => (
                 <div key={post._id}>
-                    <p>{post.caption}</p>
+                    <p>{post.caption} <br/>
+                    <span style={{ fontSize: '15px'}}> {post.postAuthor} · {post.createdAt}</span></p>
                 </div>
             ))}
         </div>

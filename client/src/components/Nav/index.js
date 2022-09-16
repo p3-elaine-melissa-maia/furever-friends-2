@@ -32,6 +32,11 @@ function Nav() {
             </Link>
           </a>
           <a>
+            <Link to={`/feed`}>
+              Feed
+            </Link>
+          </a>
+          <a>
             <Link to={`/profile/${userId}`}>
               Profile
             </Link>
@@ -51,6 +56,11 @@ function Nav() {
           <a>
             <Link to="/">
               Home
+            </Link>
+          </a>
+          <a>
+            <Link to={`/feed`}>
+              Feed
             </Link>
           </a>
           <a>
