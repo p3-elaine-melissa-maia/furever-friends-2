@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from 'react';
-import '../styles/Home.css'
+import '../styles/Adopt.css'
+import { Link } from 'react-router-dom'
 
 function Adopt() {
   const [responses, setResponses] = useState([]);
@@ -37,31 +38,18 @@ function Adopt() {
       location: values.zip,
 
       limit: 20,
+      
     }
     )
       .then(function (response) {
-        // console.log(response.data.animals)
-      
-        // let holdingArr = response.data.animals
-
-        // let filteredArr = holdingArr.filter((element) => {
-        //   console.log(element.type, values.species, "|" ,element.contact.address.postcode, values.zip )
-        //   if(element.type === values.species && element.contact.address.postcode === values.zip ){
-        //     return element
-        //   }
-        // })
-
         setArr(response.data.animals)
-        
-        // setResponses(...arr)
-        // console.log(response.data.animals);
-        // console.log(responses)
-        // setValues(data);
       })
 
       .catch(function (error) {
         // Handle the error
       });
+
+    
 
   };
 
@@ -72,7 +60,7 @@ function Adopt() {
 
   return (
 
-    <div>
+    <section>
       {/* !!!-- form to filter searches --! */}
       <div className="form-container">
         <form className="pet-finder-form" onSubmit={handleSubmit}>
@@ -101,46 +89,21 @@ function Adopt() {
         {
           arr?.map((value) => {
             return (
-              <div className="value-id" key={value.id}>
+              <div className="value-id card" key={value.id}>
                 <h2 className="value-name">{value.name}</h2>
-                <h3>{value.contact.address.postcode + " | " + value.contact.address.state}</h3>
+                {/* <img src={`${value.photos[0]}`} ></img> */}
+                <p className="pet-location">{value.contact.address.postcode + " | " + value.contact.address.state}</p>
                 <p className="value-breed">{value.breeds.primary}</p>
-                
+                <a target="_blank"  href={`${value.url}`}> Adopt Me! </a>
               </div>
+    
             )
           }
           )}
       </div>
-    </div>
+    </section>
 
   )
 };
-
-// function Adopt() {
-//   const url = "https://api.petfinder.com/v2/animals"
-//   const [pets, setPets] = useState(null)
-
-//   useEffect(() => {
-//     fetch(url)
-//       .then(response => {
-//         return response.json();
-    
-//       })
-//       .then((data) => {
-//       setPets(data)
-//       })
-//   }, []);
-
-//   if (pets) {
-//     return <>
-//       <PetFinderForm/><div></div>
-//     </>
-//   };
-
-//     return <>
-//       <PetFinderForm/><div></div>
-//     </>
-  
-// };
 
 export default Adopt;

@@ -103,7 +103,8 @@ form button{
 }
 
 .posts .singlePost{
-    background-color: #49AAf5;
+    border: 2px solid #49AAf5;
+    background-color: white;
     border-radius: 20px;
     color: black;
     font-size: 30px;

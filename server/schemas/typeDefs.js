@@ -14,13 +14,6 @@ const typeDefs = gql`
     postAuthor: String
     caption: String
     createdAt: String
-    comments: [Comment]!
-  }
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
   }
   type Auth {
     token: ID
@@ -37,9 +30,7 @@ const typeDefs = gql`
     addUser(username: String!, fullname: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPost(caption: String!): Post
-    addComment(userId: ID!, commentText: String!): Comment
     removePost(postId: ID!): Post
-    removeComment(postId: ID!, commmentId: ID!): Post
   }
 `;
 module.exports = typeDefs;

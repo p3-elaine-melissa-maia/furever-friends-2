@@ -10,16 +10,12 @@ import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
 import Adopt from './pages/Adopt';
-import Donate from './pages/Donate';
 import Feed from './pages/Feed';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Team from './pages/Team';
 import Nav from './components/Nav';
-import SinglePost from './pages/SinglePost';
-
-// import { StoreProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -56,8 +52,6 @@ function App() {
               <Route path="/profile/:userId" element={<Profile />} />
               <Route path="/team" element={<Team />} />
               <Route path="/feed" element={<Feed/>} />
-              <Route path="/posts/:postId" element={<SinglePost />}
-              />
             </Routes>
           
         </div>
