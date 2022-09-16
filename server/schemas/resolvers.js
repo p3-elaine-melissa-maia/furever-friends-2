@@ -66,31 +66,27 @@ const resolvers = {
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { posts: post._id } },
-          // { 
-          //   new: true,
-          //   runvalidators: true, 
-          // }
       );
 
       return post;
     }
     throw new AuthenticationError('You need to be logged in!');
   },
-    addComment: async (parent, { postId, commentText }, context) => {
-      if (context.user) {
-        return Post.findOneAndUpdate(
-        { _id: postId },
-          { $addToSet: { 
-            comments: {commentText, commmentAuthor: context.user.username },
-          },
-        },
-        { new: true,
-          runValidators: true,
-        } 
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!')
-    },
+    // addComment: async (parent, { postId, commentText }, context) => {
+    //   if (context.user) {
+    //     return Post.findOneAndUpdate(
+    //     { _id: postId },
+    //       { $addToSet: { 
+    //         comments: {commentText, commmentAuthor: context.user.username },
+    //       },
+    //     },
+    //     { new: true,
+    //       runValidators: true,
+    //     } 
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!')
+    // },
     removePost: async (parent, { postId}, context) => {
       if (context.user) {
         const thought = await Thought.findOneandDelete({
@@ -107,23 +103,23 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!')
     },
-    removeComment: async (parent, {postId, commentId }, context) => {
-      if (context.user) {
-        return Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commmentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    // removeComment: async (parent, {postId, commentId }, context) => {
+    //   if (context.user) {
+    //     return Post.findOneAndUpdate(
+    //       { _id: postId },
+    //       {
+    //         $pull: {
+    //           comments: {
+    //             _id: commentId,
+    //             commmentAuthor: context.user.username,
+    //           },
+    //         },
+    //       },
+    //       { new: true }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
   },
 };
 

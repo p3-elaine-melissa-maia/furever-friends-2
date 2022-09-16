@@ -6,6 +6,8 @@ import PostList from '../components/PostList';
 
 import { QUERY_POSTS } from '../utils/queries';
 
+import '../styles/Profile.css'
+
 const Feed = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
@@ -13,10 +15,9 @@ const Feed = () => {
   return (
     <section>
     <div className="content">
-        <div className="info">
+        <div className="posts">
         <PostList
             posts={posts}
-      
             />
         </div>
     </div>

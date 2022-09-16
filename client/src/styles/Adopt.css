@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url('../assets/animateddogs.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+} 
+
+.form-container{
+    background-color: #8DD9D1;
+    border-radius: 20px;
+    font-size: 30px;
+    text-transform: lowercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+form input{
+    width: 60%;
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+
+form button{
+    color: #8DD9D1;
+    background: #ECF5A8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.values-container {
+    display: inline-block;
+}
+
+.card{
+    color: #8DD9D1;
+    background: white;
+    border: 2px solid #49AAf5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+    width: 320px;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    text-align: center;
+    grid-row-start: auto;
+}
+
+.card h2{
+    color: #49AAf5;
+    font-size: 45px;
+}
+
+.card .pet-location{
+    font-size: 20px;
+}
+
+.card p{
+    color: black;
+}
+
+.card a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #8DD9D1;
+}
+
+.card a:hover{
+    color: #49AAf5;
+}

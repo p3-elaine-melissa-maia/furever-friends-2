@@ -44,26 +44,6 @@ mutation addPost(
       caption
       postAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
   }
 }
 `;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($postId: ID!, $commentText: String!) {
-    addComment(postId: $postId, commentText: $commentText) {
-      _id
-      caption
-      postAuthor
-      createdAt
-      comments{
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-  `
