@@ -58,11 +58,11 @@ function Nav() {
               Home
             </Link>
           </a>
-          <a>
+          {/* <a>
             <Link to={`/feed`}>
               Feed
             </Link>
-          </a>
+          </a> */}
           <a>
             <Link to="/adopt">
               Adopt
