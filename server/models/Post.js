@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat');
-const commentSchema = require('./Comment');
+// const commentSchema = require('./Comment');
 
 const postSchema = new Schema({
   postAuthor: {
@@ -22,7 +22,25 @@ const postSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  // comments: [commentSchema.schema]
+  comments: [
+    {
+      commentText: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 280,
+      },
+      commentAuthor: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    },
+  ],
 });
 
 const Post = mongoose.model('Post', postSchema);
