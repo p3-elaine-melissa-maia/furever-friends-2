@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
 // import ProductList from "../components/ProductList";
 // import CategoryMenu from "../components/CategoryMenu";
 // import Cart from "../components/Cart";
@@ -16,13 +16,13 @@ const Home = () => {
             {" "}
             Find Your <br />{" "}
             <span>
-              Furever Friend <FontAwesomeIcon icon={faHeart} />
+              Furever Friend <FontAwesomeIcon icon={faHeart}/>
             </span>
           </h2>
           <p>
             This application is an accessible pet social media app where users
-            can search for adoptable pets by location, post and view comments,
-            and find links to donate in order to support animals in need.
+            can search for adoptable pets, friend other pet owners, and comment
+            and like photos.
           </p>
           <Link to="/signup" href="./signup" className="signup-btn">
             sign up now!
