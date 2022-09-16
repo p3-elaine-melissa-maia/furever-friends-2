@@ -4,7 +4,8 @@ import '../styles/Home.css'
 
 function Adopt() {
   const [responses, setResponses] = useState([]);
-  const arr = []
+  const [arr, setArr] = useState([])
+  const [searchParam] = useState(["type", "location"])
   const [values, setValues] = useState({
     species: "",
     zip: "",
@@ -24,22 +25,37 @@ function Adopt() {
     fetchData();
   };
 
-  useEffect(() => {
-    fetchData()
-  }, [responses])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [responses])
 
   function fetchData() {
     var petfinder = require("@petfinder/petfinder-js");
     var client = new petfinder.Client({ apiKey: "85M0Le5ywilSAxXmQk5cvNWgrO03XluwDzz2ALbvGHwFQpSk3M", secret: "y6uvIhNy9I6se6Fu9zCRaHY8jf99I2hYSgczYJBg" });
-    client.animal.search()
+    client.animal.search({
+      type: values.species,
+      location: values.zip,
+
+      limit: 20,
+    }
+    )
       .then(function (response) {
-        // Do something with `response.data.animals`
         // console.log(response.data.animals)
-        arr.push(...response.data.animals)
-        setResponses(...arr)
-        console.log(response.data.animals);
-        console.log(responses)
-        // console.log(data);
+      
+        // let holdingArr = response.data.animals
+
+        // let filteredArr = holdingArr.filter((element) => {
+        //   console.log(element.type, values.species, "|" ,element.contact.address.postcode, values.zip )
+        //   if(element.type === values.species && element.contact.address.postcode === values.zip ){
+        //     return element
+        //   }
+        // })
+
+        setArr(response.data.animals)
+        
+        // setResponses(...arr)
+        // console.log(response.data.animals);
+        // console.log(responses)
         // setValues(data);
       })
 
@@ -49,6 +65,9 @@ function Adopt() {
 
   };
 
+  useEffect(() => {
+    console.log(arr)
+  })
 
 
   return (
@@ -65,7 +84,7 @@ function Adopt() {
             </select>
           </label>
           <input
-            type="string"
+            type="string  "
             onChange={handleZipInput}
             value={values.zip}
             className="form-group"
@@ -78,16 +97,14 @@ function Adopt() {
 
 
       <div className="values-container">
-        {console.log(responses)}{
-          responses?.map((value) => {
-            console.log(value)
+        {
+          arr?.map((value) => {
             return (
-
-
               <div className="value-id" key={value.id}>
                 <h2 className="value-name">{value.name}</h2>
-                <h2 className="value-breed">{value.breed}</h2>
-
+                <h3>{value.contact.address.postcode + " | " + value.contact.address.state}</h3>
+                <p className="value-breed">{value.breeds.primary}</p>
+                
               </div>
             )
           }
