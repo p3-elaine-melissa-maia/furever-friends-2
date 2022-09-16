@@ -42,8 +42,9 @@ function Adopt() {
       <form className="pet-finder-form" onSubmit={handleSubmit}>
         <label>
           Pick your species:
-          <select value={values.species}
-          onChange={handleSpeciesInput}>
+
+          <select >
+
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
           </select>
@@ -62,4 +63,30 @@ function Adopt() {
   )
 };
 
-export default Adopt;
+function Adopt() {
+  const url = "https://api.petfinder.com/v2/animals"
+  const [pets, setPets] = useState(null)
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => {
+        return response.json();
+    
+      })
+      .then((data) => {
+      setPets(data)
+      })
+  }, []);
+
+  if (pets) {
+    return <>
+      <PetFinderForm/><div></div>
+    </>
+  };
+
+    return <>
+      <PetFinderForm/><div></div>
+    </>
+  
+};
+
