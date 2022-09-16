@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Team from './pages/Team';
 import Nav from './components/Nav';
+
 // import { StoreProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
@@ -53,6 +54,7 @@ function App() {
               <Route path="/adopt" element={<Adopt />} />
               <Route path="/profile/:userId" element={<Profile />} />
               <Route path="/team" element={<Team />} />
+              <Route path="/feed" element={<Feed/>} />
             </Routes>
           
         </div>
