@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Home.css";
+import "../styles/Profile.css";
 import { Link } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
@@ -26,7 +26,7 @@ const Profile = () => {
     return (
         <section>
         <div className="content">
-            <div className="info">
+            <div className="posts">
             <PostList
                 posts={user.posts}
                 title={`${user.username}'s Posts`}

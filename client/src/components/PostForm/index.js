@@ -60,8 +60,8 @@ const PostForm = () => {
     };
 
     return (
-        <div>
-            <h3>Write A New Post</h3>
+        <div className='newPostForm'>
+            <h2>Write A New Post</h2>
 
             {Auth.loggedIn() ? (
                 <>
