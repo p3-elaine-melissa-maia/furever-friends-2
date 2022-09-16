@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Home.css";
+import "../styles/Profile.css";
 import { Link } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
@@ -12,21 +12,21 @@ import PostForm from "../components/PostForm";
 // import Cart from "../components/Cart";
 
 const Profile = () => {
-    const { userId } = useParams();
+    const { username, userId } = useParams();
     const { loading, data } = useQuery(
-        userId ? QUERY_SINGLE_USER : QUERY_ME,
+        userId ? QUERY_ME : QUERY_SINGLE_USER,
         {
-            variables: { userId: userId },
+            variables: { userId, username },
         }
     );
 
-    const user = data?.user || data?.me || {};
+    const user = data?.me || data?.user ||  {};
 
     if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
     return (
         <section>
         <div className="content">
-            <div className="info">
+            <div className="posts">
             <PostList
                 posts={user.posts}
                 title={`${user.username}'s Posts`}

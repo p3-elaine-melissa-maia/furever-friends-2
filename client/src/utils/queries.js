@@ -8,7 +8,11 @@ export const QUERY_USER = gql`
       fullname
       email
       password
-      posts 
+      posts {
+        _id
+        caption
+        createdAt
+      }
     }
   }
 `;
@@ -21,7 +25,11 @@ export const QUERY_SINGLE_USER = gql`
       fullname
       email
       password
-      posts 
+      posts {
+        _id
+        caption
+        createdAt
+      }
     }
   }
 `;
@@ -31,7 +39,13 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      posts
+      email
+      posts {
+        _id
+        caption
+        postAuthor
+        createdAt
+      }
     }
   }
 `;
@@ -40,9 +54,25 @@ export const QUERY_POSTS = gql`
   query getPosts{
     posts {
       _id
-      img
       caption
-      username
+      postAuthor
       createdAt
+    }
+  }
+`;
+
+export const QUERY_SINGLE_POST = gql`
+  query getSinglePost($postId: ID!) {
+    post(postId: $postId) {
+      _id
+      caption
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+        commentAuthor
+        createdAt
+      }
     }
   }`

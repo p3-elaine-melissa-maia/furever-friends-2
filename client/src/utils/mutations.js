@@ -6,6 +6,7 @@ export const LOGIN = gql`
       token
       user {
         _id
+        username
       }
     }
   }
@@ -27,6 +28,7 @@ export const ADD_USER = gql`
       token
       user {
         _id
+        username
       }
     }
   }
@@ -34,20 +36,34 @@ export const ADD_USER = gql`
 
 export const ADD_POST = gql`
 mutation addPost(
-  $img: String
   $caption: String! 
   ) {addPost(
-    img: $img
     caption: $caption
   ) {
       _id
       caption
-      img
+      postAuthor
       createdAt
       comments {
         _id
-        commentBody
+        commentText
       }
   }
 }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation addComment($postId: ID!, $commentText: String!) {
+    addComment(postId: $postId, commentText: $commentText) {
+      _id
+      caption
+      postAuthor
+      createdAt
+      comments{
+        _id
+        commentText
+        createdAt
+      }
+    }
+  }
+  `

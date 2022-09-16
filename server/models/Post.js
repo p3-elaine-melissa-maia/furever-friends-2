@@ -1,26 +1,46 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const commentSchema = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
+// const commentSchema = require('./Comment');
 
 const postSchema = new Schema({
-  username: {
+  postAuthor: {
     type: String,
     required: true,
-    unique: true,
-  },
-  img: {
-    type: String,
+    trim: true,
   },
   caption: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
-  comments: [commentSchema.schema]
+  comments: [
+    {
+      commentText: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 280,
+      },
+      commentAuthor: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    },
+  ],
 });
 
 const Post = mongoose.model('Post', postSchema);

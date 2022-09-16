@@ -1,34 +1,36 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Comment, Post } = require('../models');
+const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
     users: async () => {
-      // populate posts and comments subdocuments when querying for users
-      return await User.find({}).populate('posts').populate({
-        path: 'posts',
-        populate: 'comments'
-      });
+      return await User.find({}).populate('posts');
     },
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate('posts');
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate('posts');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    posts: async () => {
-      // populate comments subdocument when querying for posts
-      return await Post.find({}).populate('comments');
+    posts: async (parent, { username }) => {
+      const params = username ? {username} : {};
+      return  Post.find(params).sort({ createdAt: -1 });
     },
-    comments: async () => {
-      return await Comment.find({});
-    }
+    post: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('posts');
+      } 
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    // comments: async () => {
+    //   return await Comment.find({});
+    // }
   },
   
   // define functions that will fulfill the mutations
@@ -55,29 +57,73 @@ const resolvers = {
       const token = signToken(user);
       return { token, user }
     },
-    addPost: async (parent, { userId, img, caption }, context) => {
+    addPost: async (parent, { caption }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          { $addToSet: { posts: caption } },
-          { 
-            new: true,
-            runvalidators: true, 
-          }
+        const post = await Post.create({
+          caption,
+          postAuthor: context.user.username,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { posts: post._id } },
+          // { 
+          //   new: true,
+          //   runvalidators: true, 
+          // }
       );
+
+      return post;
     }
     throw new AuthenticationError('You need to be logged in!');
   },
-    addComment: async (parent, { postId, commentBody }, context) => {
+    addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
         { _id: postId },
-        { $addToSet: { comments: commentBody }},
-        { new: true } 
+          { $addToSet: { 
+            comments: {commentText, commmentAuthor: context.user.username },
+          },
+        },
+        { new: true,
+          runValidators: true,
+        } 
         );
       }
       throw new AuthenticationError('You need to be logged in!')
-    }, 
+    },
+    removePost: async (parent, { postId}, context) => {
+      if (context.user) {
+        const thought = await Thought.findOneandDelete({
+          _id: postId,
+          postAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { posts: post._id } }
+        );
+
+        return post;
+      }
+      throw new AuthenticationError('You need to be logged in!')
+    },
+    removeComment: async (parent, {postId, commentId }, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $pull: {
+              comments: {
+                _id: commentId,
+                commmentAuthor: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

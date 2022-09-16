@@ -7,19 +7,20 @@ const typeDefs = gql`
     fullname: String
     email: String
     password: String
+    posts: [Post]!
   }
   type Post {
     _id: ID
-    username: String
-    img: String
+    postAuthor: String
     caption: String
     createdAt: String
-    comments: [Comment]
+    comments: [Comment]!
   }
   type Comment {
     _id: ID
-    commentBody: String
-    username: String
+    commentText: String
+    commentAuthor: String
+    createdAt: String
   }
   type Auth {
     token: ID
@@ -29,17 +30,16 @@ const typeDefs = gql`
     users: [User]
     user(userId: ID!): User
     me: User
-    posts(username: String, img: String, caption: String, comment: ID): [Post]
-    comments(_id: String, username: String): [Comment]
+    posts(username: String): [Post]
+    post(postId: ID!): Post
   }
   type Mutation {
     addUser(username: String!, fullname: String!, email: String!, password: String!): Auth
-    addPost(userId: ID!, img: String, caption: String!): Post
-    addComment(userId: ID!, commentBody: String!): Comment
-    updateUser(userId: ID!, username: String, fullname: String, email: String, password: String): User
-    updatePost(postId: ID!, img: String, caption: String): Post
-    updateComment(commentId: ID!, commentBody: String!): Comment
     login(email: String!, password: String!): Auth
+    addPost(caption: String!): Post
+    addComment(userId: ID!, commentText: String!): Comment
+    removePost(postId: ID!): Post
+    removeComment(postId: ID!, commmentId: ID!): Post
   }
 `;
 module.exports = typeDefs;

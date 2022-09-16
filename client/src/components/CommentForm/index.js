@@ -2,49 +2,30 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_POST } from '../../utils/mutations';
-import { QUERY_ME, QUERY_POSTS } from '../../utils/queries';
+import { ADD_COMMENT } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const PostForm = () => {
-    const [caption, setCaption] = useState('');
+const CommentForm = ({ postId }) => {
+    const [commentText, setCommentText] = useState('');
 
     const [characterCount, setCharacterCount] = useState(0);
 
-    const [addPost, { error }] = useMutation(ADD_POST, {
-        update(cache, { data: { addPost } }) {
-            try {
-                const { posts } = cache.readQuery({ query: QUERY_POSTS });
-
-                cache.writeQuery({
-                    query: QUERY_POSTS,
-                    data: { posts: [addPost, ...posts] },
-                });
-            } catch (e) {
-                console.error(e);
-            }
-
-            const { me } = cache.readQuery({ query: QUERY_ME });
-            cache.writeQuery({
-                query: QUERY_ME,
-                data: { me: { ...me, posts: [...me.posts, addPost] } },
-            });
-        },
-    });
+    const [addComment, { error }] = useMutation(ADD_COMMENT);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const { data } = await addPost({
+            const { data } = await addComment({
                 variables: {
-                    caption,
-                    postAuthor: Auth.getProfile().data.username,
+                    postId,
+                    commentText,
+                    commentAuthor: Auth.getProfile().data.username,
                 },
             });
             
-            setCaption('');
+            setCommentText('');
         } catch (err) {
             console.error(err);
         }
@@ -53,14 +34,14 @@ const PostForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        if (name === 'caption' && value.length <= 280) {
-            setCaption(value);
+        if (name === 'commentText' && value.length <= 280) {
+            setCommentText(value);
             setCharacterCount(value.length);
         }
     };
 
     return (
-        <div className='newPostForm'>
+        <div className='newCommentForm'>
             <h2>Write A New Post</h2>
 
             {Auth.loggedIn() ? (
@@ -75,12 +56,12 @@ const PostForm = () => {
                         onSubmit={handleFormSubmit}
                         >
                             <textarea
-                                name="caption"
-                                placeholder='Write your post here...'
-                                value={caption}
+                                name="commentText"
+                                placeholder='Add your comment...'
+                                value={commentText}
                                 onChange={handleChange}
                             ></textarea>
-                            <button type="submit"> Add Post </button>
+                            <button type="submit"> Add Comment </button>
                             {error && (
                                 <div>
                                     {error.message}
@@ -90,7 +71,7 @@ const PostForm = () => {
                 </>
             ) : (
                 <p>
-                    You need to be logged in to add a new post. Please{' '}
+                    You need to be logged in to add a new comment. Please{' '}
                     <Link to="/login">log in</Link> or <Link to="/signup">signup.</Link>
                 </p>
             )}
@@ -98,4 +79,4 @@ const PostForm = () => {
     );
 };
 
-export default PostForm;
+export default CommentForm;
