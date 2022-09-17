@@ -95,3 +95,10 @@ form button{
 .card a:hover{
     color: #49AAf5;
 }
+
+.card-grid {
+    margin-top: px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
