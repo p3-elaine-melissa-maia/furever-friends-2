@@ -13,9 +13,11 @@ const PostForm = () => {
     const [characterCount, setCharacterCount] = useState(0);
 
     const [addPost, { error }] = useMutation(ADD_POST, {
+        
         update(cache, { data: { addPost } }) {
             try {
                 const { posts } = cache.readQuery({ query: QUERY_POSTS });
+                console.log(posts);
 
                 cache.writeQuery({
                     query: QUERY_POSTS,
@@ -35,12 +37,14 @@ const PostForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(Auth.getProfile().data.username)
 
         try {
             const { data } = await addPost({
                 variables: {
                     caption,
                     postAuthor: Auth.getProfile().data.username,
+
                 },
             });
             
