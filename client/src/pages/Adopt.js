@@ -93,7 +93,7 @@ function Adopt() {
             return (
               <div className="value-id card" key={value.id}>
                 <h2 className="value-name">{value.name}</h2>
-                <img src={`${value.photos[0]?.medium}`} ></img>
+                <img src={`${value.photos[0]?.medium }`} ></img>
                 <p className="pet-location">{value.contact.address.postcode + " | " + value.contact.address.state}</p>
                 <p className="value-breed">{value.breeds.primary}</p>
                 <a target="_blank"  href={`${value.url}`}> Adopt Me! </a>

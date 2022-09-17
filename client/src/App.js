@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Team from './pages/Team';
 import Nav from './components/Nav';
+import SinglePost from './pages/SinglePost';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -52,6 +53,11 @@ function App() {
               <Route path="/profile/:userId" element={<Profile />} />
               <Route path="/team" element={<Team />} />
               <Route path="/feed" element={<Feed/>} />
+          
+              <Route 
+                path="/posts/:postId"
+                element={<SinglePost />}/>
+            
             </Routes>
           
         </div>
