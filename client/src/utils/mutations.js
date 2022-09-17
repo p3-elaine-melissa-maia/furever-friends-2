@@ -47,14 +47,3 @@ mutation addPost(
   }
 }
 `;
-
-export const REMOVE_POST = gql`
-mutation removePost($_id: ID!){
-  removePost(_id: $_id){
-      _id
-      caption
-      postAuthor
-      createdAt
-    }
-}
-`
