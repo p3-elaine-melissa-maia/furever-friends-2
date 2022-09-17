@@ -3,6 +3,8 @@ import "../styles/Team.css";
 import placeholder from "../assets/placeholder.png";
 import elaine from "../assets/elaine.jpg";
 import Deven from "../assets/Deven.png";
+import ethan from "../assets/ethan.png";
+import maia from "../assets/maia.png";
 import { Link } from "react-router-dom";
 
 const Team = () => {
@@ -26,26 +28,23 @@ const Team = () => {
 
           <div className="teammember">
             <h3>
-              <img src={placeholder} /> <br /> Ethan{" "}
+              <img src={ethan} /> <br /> Ethan{" "}
             </h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-            laboriosam illum ratione quas iste inventore provident laborum,
-            voluptate, reiciendis voluptas officiis distinctio doloribus magni,
-            reprehenderit tempora. Id, molestiae. Ipsam, consequatur.
+            Ethan is currently a student at Northwestern's full-stack web
+            development coding bootcamp.
           </p>
 
           <div className="teammember">
             <h3>
-              <img src={placeholder} /> <br /> Maia{" "}
+              <img src={maia} /> <br /> Maia{" "}
             </h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-            laboriosam illum ratione quas iste inventore provident laborum,
-            voluptate, reiciendis voluptas officiis distinctio doloribus magni,
-            reprehenderit tempora. Id, molestiae. Ipsam, consequatur.
+            Maia is an aspiring developer based in NYC. She especially loves
+            working with CSS and Javascript! She is also an avid gamer on her
+            spare time.
           </p>
 
           <div className="teammember">
