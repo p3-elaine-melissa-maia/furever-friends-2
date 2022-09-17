@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is an accessible pet social media app where users with a variety of abilities can share posts about their pets, view their profile, and have the option to adopt a new pet by searching for local dogs and/or cats by location.
+This application is an accessible pet social media app where users with a variety of abilities can share posts about their pets, view their profile along with posts from other users, and have the option to adopt a new pet by searching for local dogs and/or cats by location.
 
 ## Table of Contents
 
@@ -11,10 +11,13 @@ This application is an accessible pet social media app where users with a variet
 - [User Story](#user-story)
 - [Contact](#contact)
 - [Links](#links)
+- [License](#license)
 
 ## Installation
 
-Our application was built using the MERN (MongoDB, Express.js, React.js, and Node.js) stack. In order to run application, either fork or run "NPM Install," "NPM Run Build," and "NPM Run Develop" in the command line.
+Our application was built using the MERN (MongoDB, Express.js, React.js, and Node.js) stack. 
+
+Install dependencies run "npm install" in command line. Next, run "npm run develop" to launch the application. 
 
 ## Technology
 
@@ -63,3 +66,11 @@ Members of Furever Friends:
 Preview of Deployed Application: 
 
    ![alt text](client/src/assets/Application.png)
+
+Application Usage Preview: https://drive.google.com/file/d/1YYP7y-XKYBK4OnIkXMLYnhFkk7VKYrid/view
+
+## License
+
+Copyright (c) 2022 Elaine Danahy, Maia Davis, Melissa Deven, and Ethan Torres
+
+Licensed under the MIT license.

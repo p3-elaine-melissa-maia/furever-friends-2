@@ -21,9 +21,10 @@ const Home = () => {
             </span>
           </h2>
           <p>
-            This application is an accessible pet social media app where users
-            can search for adoptable pets by location, post and view comments,
-            and find links to donate in order to support animals in need.
+            Welcome! This application is an accessible pet social media app
+            where users can create an account in order to search for local
+            adoptable dogs and cats by zip code, post comments about their
+            pet(s), and view posts from other users.
           </p>
           <Link to="/signup" href="./signup" className="signup-btn">
             sign up now!
