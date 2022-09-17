@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat');
-// const commentSchema = require('./Comment');
 
 const postSchema = new Schema({
   postAuthor: {

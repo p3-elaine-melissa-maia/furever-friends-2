@@ -4,11 +4,6 @@ const { Schema } = mongoose;
 
 const commentSchema = new Schema(
   {
-    // set custom id to avoid confusion with parent id
-    // commentId: {
-    //   type: Schema.Types.ObjectId,
-    //   default: () => new Types.ObjectId()
-    // },
     commentBody: {
       type: String,
       required: true,

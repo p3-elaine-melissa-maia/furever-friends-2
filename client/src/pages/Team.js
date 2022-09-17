@@ -1,7 +1,4 @@
-//Team
 import React from "react";
-// import { Link } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
 import "../styles/Team.css";
 import placeholder from "../assets/placeholder.png";
 import elaine from "../assets/elaine.jpg";

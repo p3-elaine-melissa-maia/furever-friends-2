@@ -3,43 +3,32 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import "../../styles/Nav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-const paw = <FontAwesomeIcon icon={faPaw}/>
+const paw = <FontAwesomeIcon icon={faPaw} />;
 
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
-
       const userId = Auth.getProfile().data._id;
-      
+
       return (
         <div className="navigation">
           <a>
-            <Link to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </a>
           <a>
-            <Link to="/adopt">
-              Adopt
-            </Link>
+            <Link to="/adopt">Adopt</Link>
           </a>
           <a>
-            <Link to="/team">
-              Our Team
-            </Link>
+            <Link to="/team">Our Team</Link>
           </a>
           <a>
-            <Link to={`/feed`}>
-              Feed
-            </Link>
+            <Link to={`/feed`}>Feed</Link>
           </a>
           <a>
-            <Link to={`/profile/${userId}`}>
-              Profile
-            </Link>
+            <Link to={`/profile/${userId}`}>Profile</Link>
           </a>
           <a>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -54,19 +43,13 @@ function Nav() {
         <div className="navigation">
           <input type="checkbox" id="check" />
           <a>
-            <Link to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </a>
           <a>
-            <Link to="/adopt">
-              Adopt
-            </Link>
+            <Link to="/adopt">Adopt</Link>
           </a>
           <a>
-            <Link to="/team">
-              Our Team
-            </Link>
+            <Link to="/team">Our Team</Link>
           </a>
           {/* <a>
             <Link to="/signup">
@@ -79,9 +62,11 @@ function Nav() {
             </Link>
           </a> */}
           <label htmlFor="check">
-          <i className="menu-btn"><FontAwesomeIcon icon={faBars}/></i>
-          <i className="fa-solid fa-times close-btn"></i>
-        </label>
+            <i className="menu-btn">
+              <FontAwesomeIcon icon={faBars} />
+            </i>
+            <i className="fa-solid fa-times close-btn"></i>
+          </label>
         </div>
       );
     }
@@ -91,15 +76,13 @@ function Nav() {
     <header>
       <h1>
         <Link to="/">
-        <h2 className="logo">
-          Furever <FontAwesomeIcon icon={faPaw}/> Friends
-        </h2>
+          <h2 className="logo">
+            Furever <FontAwesomeIcon icon={faPaw} /> Friends
+          </h2>
         </Link>
       </h1>
 
-      <nav>
-        {showNavigation()}
-      </nav>
+      <nav>{showNavigation()}</nav>
     </header>
   );
 }
