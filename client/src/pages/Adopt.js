@@ -26,10 +26,6 @@ function Adopt() {
     fetchData();
   };
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [responses])
-
   function fetchData() {
     var petfinder = require("@petfinder/petfinder-js");
     var client = new petfinder.Client({ apiKey: "85M0Le5ywilSAxXmQk5cvNWgrO03XluwDzz2ALbvGHwFQpSk3M", secret: "y6uvIhNy9I6se6Fu9zCRaHY8jf99I2hYSgczYJBg" });
@@ -49,14 +45,11 @@ function Adopt() {
         // Handle the error
       });
 
-    
-
   };
 
   useEffect(() => {
     console.log(arr)
   })
-
 
   return (
 
@@ -84,7 +77,6 @@ function Adopt() {
         </form>
       </div>
 
-
       <div className="values-container">
         {
 
@@ -104,7 +96,6 @@ function Adopt() {
           )}
       </div>
     </section>
-
   )
 };
 

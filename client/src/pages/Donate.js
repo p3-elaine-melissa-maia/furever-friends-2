@@ -1,16 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
 import '../styles/Home.css'
 import { Link } from "react-router-dom";
 
 
 const Donate = () => {
-  // const { loading, data } = useQuery(QUERY_MATCHUPS, {
-  //   fetchPolicy: "no-cache"
-  // });
-
-  // const matchupList = data?.matchups || [];
 
   return (
     <section>
